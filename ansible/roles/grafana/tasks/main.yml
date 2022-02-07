@@ -1,0 +1,7 @@
+--- 
+
+- name: Install grafana
+  become: yes
+  pkg:
+    name: grafana8
+

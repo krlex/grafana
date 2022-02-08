@@ -1,0 +1,16 @@
+iserver {
+    server_name example.com;
+    listen 443 ssl http2;
+    ssl_certificate /etc/certs/example.com/fullchain.pem;
+    ssl_certificate_key /etc/certs/example.com/privkey.pem;
+    include ssl_params;
+
+    root /usr/local/www/example.com;
+    access_log /var/log/nginx/example.com.log;
+    error_log /var/log/nginx/example.com.err;
+
+    location ~ /\.ht {
+        deny all;
+    }
+}
+

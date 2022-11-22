@@ -8,3 +8,5 @@ ubuntu_packages:
 ufw_rules:
   - rules: ssh
   - rules: 3000/tcp
+  - rules: 80
+  - rules: 443

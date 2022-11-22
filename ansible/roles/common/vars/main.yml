@@ -1,0 +1,10 @@
+ubuntu_packages:
+  - name: vim
+  - name: wget
+  - name: curl
+  - name: gnupg2 
+  - name: software-properties-common
+
+ufw_rules:
+  - rules: ssh
+  - rules: 3000/tcp

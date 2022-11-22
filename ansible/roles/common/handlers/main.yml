@@ -1,0 +1,4 @@
+ubuntu_packages:
+  - name: vim
+  - name: curl
+  - name: wget

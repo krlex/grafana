@@ -1,0 +1,29 @@
+---
+
+- name: Download grafana key
+  become: true
+  command: "curl -fsSL https://packages.grafana.com/gpg.key|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/grafana.gpg"
+
+- name: Add specified repository into sources list
+  ansible.builtin.apt_repository:
+    repo: "deb https://packages.grafana.com/oss/deb stable main" 
+    state: present
+
+- name: Install Grafana
+  become: true 
+  with_items: "{{ ubuntu_grafana }}"
+  package:
+    pkg: "{{ item.name }}"
+    state: latest
+
+- name: Enable service grafna
+  become: true
+  ansible.builtin.systemd:
+    name: grafana 
+    enabled: yes
+
+- name: Started service grafana
+  become: true
+  ansible.builtin.systemd:
+    name: grafana 
+    state: started 
